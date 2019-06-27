@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div>Prénom : <input value="Romain" class="prenomInput" oninput="updatePrenom()" /></div>
+    <p>Bonjour <span class="prenomOutput">Romain</span> !</p>
+    <script>
+      function updatePrenom() {
+        var inputElt = document.getElementsByTagName('input')[0];
+        var spanElt = document.getElementsByTagName('span')[0];
+
+        spanElt.firstChild.nodeValue = inputElt.value;
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body ng-app="app.module">
+    <div ng-controller="PrenomCtrl">
+      <div>
+        Prénom : <input ng-model="firstName" />
+        <button ng-click="addPrenom()">+</button>
+      </div>
+      <p ng-repeat="prenom in prenoms">
+        Bonjour <span ng-bind="prenom"></span> !
+        <button ng-if="$last">-</button>
+      </p>
+    </div>
+    <script src="../node_modules/angular/angular.js"></script>
+    <script>
+      (function() {
+        'use strict';
+
+        class PrenomCtrl {
+          constructor($scope) {
+            $scope.prenoms = ['Jean', 'Eric'];
+            $scope.addPrenom = function() {
+              $scope.prenoms.push($scope.firstName);
+            };
+          }
+        }
+
+        const module = angular.module('app.module', []);
+        module.controller('PrenomCtrl', PrenomCtrl);
+      })();
+    </script>
+  </body>
+</html>

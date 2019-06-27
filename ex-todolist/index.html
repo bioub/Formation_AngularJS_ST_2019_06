@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body ng-app="app.module">
+    <div ng-controller="TodoCtrl">
+      <form ng-submit="addTodo()">
+        <input type="checkbox">
+        <input ng-model="newTodo.title" />
+        <button>+</button>
+      </form>
+      <p ng-repeat="todo in todos">
+        <input type="checkbox" ng-model="todo.completed">
+        <input ng-model="todo.title" />
+        <button>-</button>
+      </p>
+    </div>
+    <script src="../node_modules/angular/angular.js"></script>
+    <script>
+      (function() {
+        'use strict';
+
+        class TodoCtrl {
+          constructor($scope) {
+            $scope.todos = [
+              {
+                id: 123,
+                title: 'Acheter du pain',
+                completed: false,
+              },
+              {
+                id: 456,
+                title: 'Introduire AngularJS',
+                completed: true,
+              },
+              {
+                id: 789,
+                title: 'Corriger un exercice',
+                completed: false,
+              }
+            ];
+
+            $scope.addTodo = function() {
+              // Exercice 1 : Ajouter une todo au tableau
+              // Ajouter un objet todo à $scope.todos
+              // { id: ##à générer##, title: ##valeur du champ##, completed: false }
+              // Le template/la vue va se raffraichir tout seul
+            };
+
+            // Exercice 2 : Supprimer la todo au clic du bouton
+            // - créer une fonction deleteTodo sur le scope du controleur
+            // - associer cette fonction au clic du bouton moins
+            // - cette fonction prend 1 paramètre : l'indice ou la todo
+            // (indice sur le scope d'un ng-repeat: $index)
+
+            // Exercice 3 : Tout cocher/décocher
+            // - au clic de la checkbox du formulaire appeler une fonction
+            // - cette fonction doit passer tous les éléments du tableau
+            // à completed true/false en fonction de la valeur de la checkbox du form
+          }
+        }
+
+        const module = angular.module('app.module', []);
+        module.controller('TodoCtrl', TodoCtrl);
+      })();
+    </script>
+  </body>
+</html>
