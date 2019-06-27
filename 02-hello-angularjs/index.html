@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <!--
+    1 - compilation parcours recursif du DOM en partant de ng-app
+    à la recherche des ng-
+    2 - directive (ng-), attributs HTML qui masque du code
+    3 - scope, portée définie au niveau d'une balise
+    4 - data-binding, ng-bind, écouter les changement de la propriété prenom du scope
+    (dans l'exemple, un objet scope est associé à la balise body où est présent ng-app)
+    5 - watcher function qui est créé au moment d'un ng-bind et qui sera exécutée
+    à chaque fois que l'algo de détection de changement se lancera
+    6 - ng-model, à utiliser sur des champs, équivalent à ng-bind (écoute via un watcher
+    les changements du scope et met à jour la propriété value du champ), mais également
+    un binding du template/View -> scope/Model (MVVM)
+    ng-model two way data-binding
+  -->
+  <body ng-app ng-init="prenom = 'Romain'">
+    <div>Prénom : <input ng-model="prenom" /></div>
+    <div>Prénom : <input ng-model="prenom" /></div>
+    <p>Bonjour <span ng-bind="prenom"></span> !</p>
+    <script src="../node_modules/angular/angular.js"></script>
+  </body>
+</html>
